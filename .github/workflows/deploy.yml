@@ -33,13 +33,11 @@ jobs:
         fail_ci_if_error: true
     - name: checkout
       uses: actions/checkout@master
-      with:
-        ref: main
     - name: Bump version and tagging and publish
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git pull origin main
+        git pull origin master
         poetry run semantic-release version
         poetry version $(grep "version" */__init__.py | cut -d "'" -f 2 | cut -d '"' -f 2)
         git commit -m "Bump versions" -a
@@ -63,7 +61,7 @@ jobs:
         prerelease: false
     - name: Build package and publish to test PyPI
       env:
-        TEST_PYPI_USERNAME: __token__ 
+        TEST_PYPI_USERNAME: ${{ secrets.TEST_PYPI_USERNAME }} 
         TEST_PYPI_PASSWORD: ${{ secrets.TEST_PYPI_PASSWORD }}
       run: |
         poetry config repositories.test-pypi https://test.pypi.org/legacy/
