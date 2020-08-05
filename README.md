@@ -1,6 +1,6 @@
 ## pypkgs 
 
-![](https://github.com/TomasBeuzen/pypkgs/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/TomasBeuzen/pypkgs/branch/main/graph/badge.svg)](https://codecov.io/gh/TomasBeuzen/pypkgs) ![Release](https://github.com/TomasBeuzen/pypkgs/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/pypkgs/badge/?version=latest)](https://pypkgs.readthedocs.io/en/latest/?badge=latest)
+![](https://github.com/TomasBeuzen/pypkgs/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/TomasBeuzen/pypkgs/branch/master/graph/badge.svg)](https://codecov.io/gh/TomasBeuzen/pypkgs) ![build](https://github.com/TomasBeuzen/pypkgs/workflows/build/badge.svg) [![Documentation Status](https://readthedocs.org/projects/pypkgs/badge/?version=latest)](https://pypkgs.readthedocs.io/en/latest/?badge=latest)
 
 Python package that eases the pain of concatenating Pandas categoricals!
 
@@ -10,16 +10,22 @@ Python package that eases the pain of concatenating Pandas categoricals!
 pip install -i https://test.pypi.org/simple/ pypkgs
 ```
 
-### Features
-- TODO
-
 ### Dependencies
 
-- TODO
+See [poetry.lock](poetry.lock) for a list of dependencies.
 
 ### Usage
 
-- TODO
+```python
+>>> from pypkgs import pypkgs
+>>> import pandas as pd
+>>> a = pd.Categorical(["character", "hits", "your", "eyeballs"])
+>>> b = pd.Categorical(["but", "integer", "where it", "counts"])
+>>> pypkgs.catbind(a, b)
+[character, hits, your, eyeballs, but, integer, where it, counts]
+Categories (8, object): [but, character, counts,
+eyeballs, hits, integer, where it, your]
+```
 
 ### Documentation
 The official documentation is hosted on Read the Docs: https://pypkgs.readthedocs.io/en/latest/
