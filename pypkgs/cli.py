@@ -1,8 +1,10 @@
 import argparse
 
+
 def main():
     args = parse_args()
     print(args.accumulate(args.integers))
+
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Process some integers.')
