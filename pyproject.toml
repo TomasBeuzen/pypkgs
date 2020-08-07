@@ -30,3 +30,6 @@ patch_without_tag = "true"
 [tool.poetry.scripts]
 pypkgs = "pypkgs.cli:main"
 
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
